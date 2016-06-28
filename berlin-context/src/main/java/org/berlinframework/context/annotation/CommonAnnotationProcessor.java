@@ -27,8 +27,8 @@ public class CommonAnnotationProcessor {
             if(annotation instanceof Bean || annotation instanceof Component || annotation instanceof Controller || annotation instanceof Service || annotation instanceof Repository) {
                 try {
                     this.beanFactory.getBeans().put(clazz.getName(),clazz.newInstance());
-                } catch (InstantiationException | IllegalAccessException e1) {
-                    throw new RuntimeException(e1);
+                } catch (InstantiationException | IllegalAccessException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
