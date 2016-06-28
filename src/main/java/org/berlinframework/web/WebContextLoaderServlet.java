@@ -30,7 +30,7 @@ public class WebContextLoaderServlet extends HttpServlet {
     
     @Override
     public void init() throws ServletException {
-    	System.out.println("Starting Brelin Framework");
+    	System.out.println("Starting Berlin Framework");
     	System.out.println("Features: ");
     	System.out.println("Dependency Injection");
     	System.out.println("Front Controller");
