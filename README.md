@@ -1,2 +1,2 @@
-# berlin-framework
-Dependency Injection and MVC Framework
+# Berlin Framework
+Vanilla Dependency Injection and MVC Framework
