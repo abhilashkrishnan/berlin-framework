@@ -28,9 +28,12 @@ public class MyController {
 	 * Will change it to a fully blown implementation later
 	 */
 	public void get(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		MyFirstBean mfb = (MyFirstBean) applicationContext.getBean(MyFirstBean.class.getName());
+		MyFirstBean mfb = (MyFirstBean) applicationContext.getBean("first");
 		mfb.setName("Berlin Framework");
 		SecondBean sb = (SecondBean) applicationContext.getBean(SecondBean.class.getName());
 		resp.getWriter().write("Hello from "+sb.getMyFirstBean().getName());
+		resp.getWriter().write(sb.getThirdBean().getMessage());
+		resp.getWriter().flush();
+		
 	}
 }
