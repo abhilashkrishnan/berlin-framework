@@ -1,11 +1,11 @@
 # Berlin Framework
 Light-weight Dependency Injection and MVC Framework. 
 
-#IDE
+#Development
 This is IntelliJ IDEA based project modules.
 
 #Build
-Current the build is done manually. Plan to use Gradle soon.
+At present the build is done manually. Plan to use Gradle soon.
 
 #Tutorials
 Coming soon!
