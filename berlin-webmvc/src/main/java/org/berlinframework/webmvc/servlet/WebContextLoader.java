@@ -8,16 +8,15 @@ import java.net.URLClassLoader;
 import java.net.URLDecoder;
 import java.util.Collection;
 
-import javax.management.RuntimeErrorException;
 import javax.servlet.ServletContext;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
-import org.berlinframework.beans.annotation.AutoWiredAnnotationProcessor;
-import org.berlinframework.beans.annotation.BeanAnnotationProcessor;
 import org.berlinframework.beans.factory.ApplicationContext;
 import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.context.annotation.AutoWiredAnnotationProcessor;
+import org.berlinframework.context.annotation.CommonAnnotationProcessor;
 
 public class WebContextLoader {
 	private BeanFactory beanFactory;
@@ -59,9 +58,9 @@ public class WebContextLoader {
 							try {
 								Class<?> clazz = cl.loadClass(className);
 								if(!clazz.getName().equals(this.beanFactory.getClass().getName()) && !clazz.isAnnotation() && !clazz.isInterface() && !clazz.isEnum() && ! (clazz.getModifiers() == Modifier.ABSTRACT)){
-									BeanAnnotationProcessor beanAnnotationProcessor = new BeanAnnotationProcessor();
-									beanAnnotationProcessor.setBeanFactory(beanFactory);
-									beanAnnotationProcessor.process(clazz, clazz);
+									CommonAnnotationProcessor commonAnnotationProcessor = new CommonAnnotationProcessor();
+									commonAnnotationProcessor.setBeanFactory(beanFactory);
+									commonAnnotationProcessor.process(clazz, clazz);
 								}
 							} catch (ClassNotFoundException e) {
 								throw new RuntimeException(e);

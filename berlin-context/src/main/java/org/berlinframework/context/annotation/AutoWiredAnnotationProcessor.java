@@ -1,10 +1,10 @@
-package org.berlinframework.beans.annotation;
+package org.berlinframework.context.annotation;
+
+import org.berlinframework.beans.factory.BeanFactory;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Set;
-
-import org.berlinframework.beans.factory.BeanFactory;
 
 public class AutoWiredAnnotationProcessor {
 	private BeanFactory beanFactory;
