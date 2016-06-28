@@ -1,5 +1,8 @@
 # Berlin Framework
 Vanilla Dependency Injection and MVC Framework. 
 
-#Modules
-This is IntelliJ IDEA modules based project.
+#IDE
+This is IntelliJ IDEA based project modules.
+
+#Build
+Current the build is done manually. Plan to use Gradle soon. 
