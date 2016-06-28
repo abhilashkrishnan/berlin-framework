@@ -3,7 +3,9 @@ package org.berlinframework.context.annotation;
 import org.berlinframework.beans.factory.BeanFactory;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.Map;
 import java.util.Set;
 
 public class AutoWiredAnnotationProcessor {
@@ -16,6 +18,7 @@ public class AutoWiredAnnotationProcessor {
 	public void process() {
 		this.beanFactory.getBeans().forEach((k, v) -> {
 			Class<?> beanClass = v.getClass();
+
 			Method[] methods = beanClass.getDeclaredMethods();
 			for (Method method : methods) {
 				Annotation[] annotations = method.getAnnotations();
@@ -26,14 +29,10 @@ public class AutoWiredAnnotationProcessor {
 
 						int i = 0;
 						for (Class<?> paramClass : paramTypes) {
-							Set<String> names = this.beanFactory.getBeans().keySet();
-							for (String name : names) {
-								Object bean = this.beanFactory.getBeans().get(name);
-								if (bean.getClass().getName().equals(paramClass.getName())) {
-									params[i++] = bean;
-								}
-							}
+							Object bean = this.beanFactory.getBean(paramClass.getName());
+							params[i++] = bean;
 						}
+
 						method.setAccessible(true);
 						try {
 							method.invoke(v, params);
@@ -42,6 +41,7 @@ public class AutoWiredAnnotationProcessor {
 						}
 					}
 				}
+				// Check for AutoWired fields and inject
 			}
 		});
 	}
