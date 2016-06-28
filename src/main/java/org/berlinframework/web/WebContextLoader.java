@@ -1,4 +1,4 @@
-package org.brelin.web;
+package org.berlinframework.web;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -14,10 +14,10 @@ import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
-import org.brelin.beans.annotation.AutoWiredAnnotationProcessor;
-import org.brelin.beans.annotation.BeanAnnotationProcessor;
-import org.brelin.beans.factory.ApplicationContext;
-import org.brelin.beans.factory.BeanFactory;
+import org.berlinframework.beans.annotation.AutoWiredAnnotationProcessor;
+import org.berlinframework.beans.annotation.BeanAnnotationProcessor;
+import org.berlinframework.beans.factory.ApplicationContext;
+import org.berlinframework.beans.factory.BeanFactory;
 
 public class WebContextLoader {
 	private BeanFactory beanFactory;

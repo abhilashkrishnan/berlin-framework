@@ -1,6 +1,6 @@
-package org.brelin.web.test;
+package org.berlinframework.web.test;
 
-import org.brelin.beans.annotation.Bean;
+import org.berlinframework.beans.annotation.Bean;
 
 /**
  * Created by ACER on 27-06-2016.

@@ -1,10 +1,10 @@
-package org.brelin.beans.annotation;
+package org.berlinframework.beans.annotation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Set;
 
-import org.brelin.beans.factory.BeanFactory;
+import org.berlinframework.beans.factory.BeanFactory;
 
 public class AutoWiredAnnotationProcessor {
 	private BeanFactory beanFactory;

@@ -1,13 +1,13 @@
-package org.brelin.web.test;
+package org.berlinframework.web.test;
 
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.brelin.beans.annotation.AutoWired;
-import org.brelin.beans.factory.ApplicationContext;
-import org.brelin.web.annotation.Controller;
+import org.berlinframework.beans.annotation.AutoWired;
+import org.berlinframework.beans.factory.ApplicationContext;
+import org.berlinframework.web.annotation.Controller;
 
 @Controller
 public class MyController {

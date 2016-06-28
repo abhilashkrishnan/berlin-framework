@@ -1,4 +1,4 @@
-package org.brelin.beans.annotation;
+package org.berlinframework.beans.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package org.brelin.beans.factory;
+package org.berlinframework.beans.factory;
 
 import java.util.HashMap;
 import java.util.Map;

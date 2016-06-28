@@ -1,4 +1,4 @@
-package org.brelin.web;
+package org.berlinframework.web;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.brelin.web.annotation.Controller;
+import org.berlinframework.web.annotation.Controller;
 
 /**
  * Web application context loader servlet

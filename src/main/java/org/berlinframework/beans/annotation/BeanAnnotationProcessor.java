@@ -1,10 +1,10 @@
-package org.brelin.beans.annotation;
+package org.berlinframework.beans.annotation;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AnnotatedElement;
 
-import org.brelin.beans.factory.BeanFactory;
-import org.brelin.web.annotation.Controller;
+import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.web.annotation.Controller;
 
 public class BeanAnnotationProcessor {
 	private BeanFactory beanFactory;
