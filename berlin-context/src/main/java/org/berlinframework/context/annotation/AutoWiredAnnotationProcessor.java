@@ -29,7 +29,6 @@ public class AutoWiredAnnotationProcessor {
 							Set<String> names = this.beanFactory.getBeans().keySet();
 							for (String name : names) {
 								Object bean = this.beanFactory.getBeans().get(name);
-								
 								if (bean.getClass().getName().equals(paramClass.getName())) {
 									params[i++] = bean;
 								}

@@ -13,28 +13,29 @@ import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
-import org.berlinframework.beans.factory.ApplicationContext;
 import org.berlinframework.beans.factory.BeanFactory;
 import org.berlinframework.context.annotation.AutoWiredAnnotationProcessor;
 import org.berlinframework.context.annotation.CommonAnnotationProcessor;
+import org.berlinframework.webmvc.servlet.annotation.ControllerAnnotationProcessor;
 
 public class WebContextLoader {
-    private BeanFactory beanFactory;
+    private WebApplicationContext webApplicationContext;
     private ServletContext servletContext;
 
     public WebContextLoader(ServletContext servletContext) {
-        this.beanFactory = new ApplicationContext();
+        this.webApplicationContext = new WebApplicationContext();
         this.servletContext = servletContext;
     }
 
     public void load() {
-        this.beanFactory.getBeans().put(this.beanFactory.getClass().getName(), beanFactory);
+        this.webApplicationContext.getBeans().put(this.webApplicationContext.getClass().getName(), webApplicationContext);
         this.loadBeans();
         this.wireBeans();
+        this.processControllers();
     }
 
     public BeanFactory getBeanFactory() {
-        return this.beanFactory;
+        return this.webApplicationContext;
     }
 
     private void loadBeans() {
@@ -44,6 +45,9 @@ public class WebContextLoader {
         if (cl instanceof URLClassLoader)
             urlCl = (URLClassLoader) cl;
         else throw new RuntimeException();
+
+        CommonAnnotationProcessor commonAnnotationProcessor = new CommonAnnotationProcessor();
+        commonAnnotationProcessor.setBeanFactory(webApplicationContext);
 
         for (URL url : urlCl.getURLs()) {
             try {
@@ -59,9 +63,7 @@ public class WebContextLoader {
                             String className = name.replace('\\', '.');
                             try {
                                 Class<?> clazz = cl.loadClass(className);
-                                if (!clazz.getName().equals(this.beanFactory.getClass().getName()) && !clazz.isAnnotation() && !clazz.isInterface() && !clazz.isEnum() && !(clazz.getModifiers() == Modifier.ABSTRACT)) {
-                                    CommonAnnotationProcessor commonAnnotationProcessor = new CommonAnnotationProcessor();
-                                    commonAnnotationProcessor.setBeanFactory(beanFactory);
+                                if (!clazz.getName().equals(this.webApplicationContext.getClass().getName()) && !clazz.isAnnotation() && !clazz.isInterface() && !clazz.isEnum() && !(clazz.getModifiers() == Modifier.ABSTRACT)) {
                                     commonAnnotationProcessor.process(clazz, clazz);
                                 }
                             } catch (ClassNotFoundException e) {
@@ -82,8 +84,13 @@ public class WebContextLoader {
 
     private void wireBeans() {
         AutoWiredAnnotationProcessor autoWiredAnnotationProcessor = new AutoWiredAnnotationProcessor();
-        autoWiredAnnotationProcessor.setBeanFactory(beanFactory);
+        autoWiredAnnotationProcessor.setBeanFactory(webApplicationContext);
         autoWiredAnnotationProcessor.process();
     }
 
+    private void processControllers() {
+        ControllerAnnotationProcessor controllerAnnotationProcessor = new ControllerAnnotationProcessor();
+        controllerAnnotationProcessor.setBeanFactory(webApplicationContext);
+        controllerAnnotationProcessor.process();
+    }
 }

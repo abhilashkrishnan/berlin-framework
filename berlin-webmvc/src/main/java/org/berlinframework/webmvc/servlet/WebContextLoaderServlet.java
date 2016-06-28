@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Web application context loader servlet
  */
-@WebServlet(name="contextLoader",urlPatterns="/", loadOnStartup=1)
+@WebServlet(name="contextLoader",urlPatterns="/berlin-context", loadOnStartup=1)
 public class WebContextLoaderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private WebContextLoader loader;
@@ -38,37 +38,7 @@ public class WebContextLoaderServlet extends HttpServlet {
     	System.out.println("MVC Controller");
     	loader = new WebContextLoader(getServletContext());
 		loader.load();
+		getServletContext().setAttribute("loader", loader);
     }
 
-	/*
-	 * Currently it is a very simple implementation. Will make it better
-	 */
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    	//Load controllers - Very Simple Implementation
-    	loader.getBeanFactory().getBeans().forEach((k,v) -> {
-    	Object obj = v;
-    	Class<?> clazz = obj.getClass();
-    	Annotation[] annotations = clazz.getAnnotations();
-    	for(Annotation annotation : annotations) {
-    		if(annotation instanceof Controller) {
-    			try {
-					/* Will remove hardcoded method names */
-					Method method = clazz.getDeclaredMethod("processGet", HttpServletRequest.class, HttpServletResponse.class);
-					method.invoke(obj, req, resp);
-				} catch (NoSuchMethodException e) {
-					throw new RuntimeException(e);
-				} catch (SecurityException e) {
-					throw new RuntimeException(e);
-				} catch (IllegalAccessException e) {
-					throw new RuntimeException(e);
-				} catch (IllegalArgumentException e) {
-					throw new RuntimeException(e);
-				} catch (InvocationTargetException e) {
-					throw new RuntimeException(e);
-				}
-    		}
-    	}
-    	});
-    }
 }

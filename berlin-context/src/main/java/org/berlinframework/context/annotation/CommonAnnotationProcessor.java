@@ -15,6 +15,7 @@ import java.lang.reflect.AnnotatedElement;
 public class CommonAnnotationProcessor {
     private BeanFactory beanFactory;
 
+
     public void setBeanFactory(BeanFactory beanFactory) {
         this.beanFactory = beanFactory;
     }
