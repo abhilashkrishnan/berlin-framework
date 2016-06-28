@@ -7,11 +7,9 @@ import java.lang.annotation.Target;
 
 /**
  * @author Abhilash Krishnan
- * Default mode is auto wire by Type
- * If you want to auto wire by Name use Qualifier along with AutoWired
  */
-
 @Retention(RetentionPolicy.RUNTIME)
-@Target( {ElementType.METHOD, ElementType.FIELD} )
-public @interface AutoWired {
+@Target( ElementType.FIELD )
+public @interface Qualifier {
+    String name();
 }

@@ -13,4 +13,8 @@ public class BeanFactory {
 	public Map<String, Object> getBeans() {
 		return this.beans;
 	}
+
+	public boolean contains(String name) {
+		return this.beans.containsKey(name);
+	}
 }

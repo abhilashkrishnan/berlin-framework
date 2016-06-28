@@ -62,8 +62,13 @@ public class AutoWiredAnnotationProcessor {
 
 		for ( Parameter parameter : parameters ) {
 			Field field = AnnotationUtils.getAutoWiredField(clazz, parameter.getType());
-			if (field != null)
-				params[i++] = this.beanFactory.getBean(field.getType().getName());
+			if (field != null) {
+				if( AnnotationUtils.isFieldQualifierApplied(field)) {
+					Qualifier qualifier = field.getAnnotation(Qualifier.class);
+					params[i++] = this.beanFactory.getBean(qualifier.name());
+				}
+				else params[i++] = this.beanFactory.getBean(field.getType().getName());
+			}
 		}
 
 		if(i > 0) {

@@ -19,4 +19,8 @@ public class AnnotationUtils {
     public static boolean isFieldAutoWired(Field field) {
         return field.getAnnotation(AutoWired.class) != null ? true : false;
     }
+
+    public static boolean isFieldQualifierApplied(Field field) {
+        return field.getAnnotation(Qualifier.class) != null ? true : false;
+    }
 }
