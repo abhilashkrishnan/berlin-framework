@@ -56,7 +56,7 @@ public class DispatcherServlet extends HttpServlet {
 
                 if(req.getMethod().equals("GET"))
                     method = clazz.getDeclaredMethod("get", HttpServletRequest.class, HttpServletResponse.class);
-                else if(req.getMethod().equals("POST")) method = clazz.getDeclaredMethod("post", HttpServletRequest.class, HttpServletResponse.class);
+                else if(req.getMethod().equals( "POST")) method = clazz.getDeclaredMethod("post", HttpServletRequest.class, HttpServletResponse.class);
 
                 if (method != null)
                     method.invoke(controller, req, resp);
