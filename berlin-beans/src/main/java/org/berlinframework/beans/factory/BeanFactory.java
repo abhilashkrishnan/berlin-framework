@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class BeanFactory {
 	private Map<String, Object> beans = new HashMap<>();
+	private ClassLoader classLoader;
 	
 	public Object getBean(String name) {
 		return this.beans.get(name);
@@ -16,5 +17,13 @@ public class BeanFactory {
 
 	public boolean contains(String name) {
 		return this.beans.containsKey(name);
+	}
+
+	public ClassLoader getClassLoader() {
+		return this.classLoader;
+	}
+
+	public void setClassLoader(ClassLoader classLoader) {
+		this.classLoader = classLoader;
 	}
 }
