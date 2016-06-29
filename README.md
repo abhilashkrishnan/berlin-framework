@@ -2,10 +2,10 @@
 Light-weight Dependency Injection and MVC Framework. 
 
 #Development
-These are IntelliJ IDEA based project modules.
+The project is divided into sub projects. You can use your preferred IDE for development.
 
 #Build
-At present the build is done manually. Plan to use Gradle soon.
+We are using Gradle build system. You can execute "gradle clean build" to build the projects.
 
 #Tutorials
 To get a feel of Berlin DI and WebMVC please build and run berlin-webmvc-test project.
