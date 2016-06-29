@@ -30,6 +30,7 @@ public class MyController {
 	/*
 	 * Simple implementation to handle http GET request.
 	 * First and Third Bean is injected and auto wired to Second Bean.
+	 * We are working on auto mapping of JSON or XML request to Bean and vice versa for response.   
 	 */
 	public void get(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
