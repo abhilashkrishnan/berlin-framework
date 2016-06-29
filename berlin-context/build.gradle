@@ -1,0 +1,13 @@
+project(':berlin-context') {
+    dependencies {
+        compile project (':berlin-beans')
+        compile group: 'commons-io', name: 'commons-io', version: '2.5'
+        compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.4'
+    }
+}
+
+
+
+
+
+

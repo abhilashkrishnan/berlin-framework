@@ -1,0 +1,10 @@
+project(':berlin-webmvc') {
+    dependencies {
+        compile project (':berlin-beans')
+        compile project (':berlin-context')
+    }
+}
+
+
+
+
