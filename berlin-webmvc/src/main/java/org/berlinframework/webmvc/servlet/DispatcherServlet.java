@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 
 /**
  * @author Abhilash Krishnan
+ * The Front-Controller servlet
  */
 @WebServlet(name="dispatcher",urlPatterns="/*", loadOnStartup=2)
 public class DispatcherServlet extends HttpServlet {
