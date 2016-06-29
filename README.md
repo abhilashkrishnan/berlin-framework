@@ -8,4 +8,5 @@ These are IntelliJ IDEA based project modules.
 At present the build is done manually. Plan to use Gradle soon.
 
 #Tutorials
-Coming soon!
+To get a feel of Berlin DI and WebMVC please build and run berlin-webmvc-test project.
+More tutorials coming soon!
