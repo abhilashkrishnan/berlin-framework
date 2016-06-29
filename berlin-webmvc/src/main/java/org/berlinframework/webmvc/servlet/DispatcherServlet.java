@@ -47,7 +47,7 @@ public class DispatcherServlet extends HttpServlet {
 
     private void route(HttpServletRequest req, HttpServletResponse resp) {
         WebApplicationContext webApplicationContext = (WebApplicationContext) this.loader.getBeanFactory();
-        Object controller = webApplicationContext.getBean(req.getPathInfo());
+        Object controller = webApplicationContext.getBean(req.getRequestURI().substring(req.getContextPath().length()));
         if(controller != null) {
             Class<?> clazz = controller.getClass();
             try {
