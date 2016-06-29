@@ -5,7 +5,7 @@ import org.berlinframework.context.annotation.Bean;
 import org.berlinframework.context.annotation.Qualifier;
 
 /**
- * Created by ACER on 27-06-2016.
+ * @author Abhilash Krishnan
  */
 @Bean(name = "Second")
 public class SecondBean {

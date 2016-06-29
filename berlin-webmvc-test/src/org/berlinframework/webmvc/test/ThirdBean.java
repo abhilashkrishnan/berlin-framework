@@ -2,6 +2,11 @@ package org.berlinframework.webmvc.test;
 
 import org.berlinframework.context.annotation.Bean;
 
+/**
+ * 
+ * @author Abhilash Krishnan
+ *
+ */
 @Bean
 public class ThirdBean {
 	private String message = "I am third bean. I am injected through AutoWired method";
