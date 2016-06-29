@@ -14,11 +14,11 @@ import org.berlinframework.webmvc.servlet.WebApplicationContext;
 public class MyController {
 	
 	/*
-	 * To use controllers we should auto wire WebApplicationContext instead of ApplicationContext 
+	 * In a type Berlin WebMVC controller it is advised to auto wire WebApplicationContext instead of ApplicationContext 
 	 */
+	@AutoWired
 	private WebApplicationContext applicationContext;
 	
-	@AutoWired
 	public void setApplicationContext(WebApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
 	}
@@ -31,8 +31,8 @@ public class MyController {
 		MyFirstBean mfb = (MyFirstBean) applicationContext.getBean("first");
 		mfb.setName("Berlin Framework");
 		SecondBean sb = (SecondBean) applicationContext.getBean(SecondBean.class.getName());
-		resp.getWriter().write("Hello from "+sb.getMyFirstBean().getName());
-		resp.getWriter().write(sb.getThirdBean().getMessage());
+		resp.getWriter().write("<p>Hello from "+ sb.getMyFirstBean().getName()+ "<p>");
+		resp.getWriter().write("<p>" + sb.getThirdBean().getMessage() + "<p>");
 		resp.getWriter().flush();
 		
 	}
