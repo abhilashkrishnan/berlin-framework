@@ -1,12 +1,10 @@
 package org.berlinframework.context.annotation;
 
 import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.stereotype.Controller;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.Parameter;
+import java.lang.reflect.*;
 import java.util.Map;
 import java.util.Set;
 
@@ -74,7 +72,14 @@ public class AutoWiredAnnotationProcessor {
 		if(i > 0) {
 			method.setAccessible(true);
 			try {
-				method.invoke(this.beanFactory.getBean(clazz.getName()), params);
+				Object bean = null;
+				Controller controller = clazz.getAnnotation(Controller.class);
+
+				if(controller != null)
+					bean = this.beanFactory.getBean(controller.path());
+				else bean = this.beanFactory.getBean(clazz.getName());
+
+				method.invoke(bean, params);
 			} catch (IllegalAccessException | InvocationTargetException e) {
 				throw new RuntimeException(e);
 			}

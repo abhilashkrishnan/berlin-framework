@@ -45,9 +45,16 @@ public class CommonAnnotationProcessor {
                             }
                         }
                     }
-                    //Create instance of Bean
-                    if(!this.beanFactory.contains(clazz.getName()))
-                        this.beanFactory.getBeans().put(clazz.getName(),clazz.newInstance());
+                    if (annotation instanceof Controller) {
+                        Controller controller = (Controller) annotation;
+                        if (this.beanFactory.contains(controller.path()))
+                            throw new RuntimeException("Bean with duplicate path");
+                        this.beanFactory.getBeans().put(controller.path(), clazz.newInstance());
+                    }else {
+                        //Create instance of Bean
+                        if (!this.beanFactory.contains(clazz.getName()))
+                            this.beanFactory.getBeans().put(clazz.getName(), clazz.newInstance());
+                    }
                 } catch (InstantiationException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }

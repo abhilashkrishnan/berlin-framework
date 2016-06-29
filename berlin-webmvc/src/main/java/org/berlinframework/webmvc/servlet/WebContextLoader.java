@@ -16,22 +16,20 @@ import org.apache.commons.lang3.StringUtils;
 import org.berlinframework.beans.factory.BeanFactory;
 import org.berlinframework.context.annotation.AutoWiredAnnotationProcessor;
 import org.berlinframework.context.annotation.CommonAnnotationProcessor;
-import org.berlinframework.webmvc.servlet.annotation.ControllerAnnotationProcessor;
 
 public class WebContextLoader {
     private WebApplicationContext webApplicationContext;
     private ServletContext servletContext;
 
     public WebContextLoader(ServletContext servletContext) {
-        this.webApplicationContext = new WebApplicationContext();
         this.servletContext = servletContext;
+        this.webApplicationContext = new WebApplicationContext(servletContext);
     }
 
     public void load() {
         this.webApplicationContext.getBeans().put(this.webApplicationContext.getClass().getName(), webApplicationContext);
         this.loadBeans();
         this.wireBeans();
-        this.processControllers();
     }
 
     public BeanFactory getBeanFactory() {
@@ -88,9 +86,4 @@ public class WebContextLoader {
         autoWiredAnnotationProcessor.process();
     }
 
-    private void processControllers() {
-        ControllerAnnotationProcessor controllerAnnotationProcessor = new ControllerAnnotationProcessor();
-        controllerAnnotationProcessor.setBeanFactory(webApplicationContext);
-        controllerAnnotationProcessor.process();
-    }
 }
