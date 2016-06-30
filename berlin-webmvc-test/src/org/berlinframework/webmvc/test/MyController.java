@@ -5,8 +5,12 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.berlinframework.beans.factory.ApplicationContext;
 import org.berlinframework.context.annotation.AutoWired;
 import org.berlinframework.stereotype.Controller;
+import org.berlinframework.web.annotation.GET;
+import org.berlinframework.web.annotation.Path;
+import org.berlinframework.web.annotation.PathParam;
 import org.berlinframework.webmvc.servlet.WebApplicationContext;
 
 /**
@@ -14,34 +18,70 @@ import org.berlinframework.webmvc.servlet.WebApplicationContext;
  * @author Abhilash Krishnan
  */
 
-@Controller(path="/my")
+@Controller
+@Path("/my")
 public class MyController {
 	
 	/*
-	 * In a typical Berlin WebMVC controller it is advised to auto wire WebApplicationContext instead of ApplicationContext 
+	 * Autowire ApplicationContext instance 
 	 */
 	@AutoWired
-	private WebApplicationContext applicationContext;
+	private ApplicationContext applicationContext;
 	
-	public void setApplicationContext(WebApplicationContext applicationContext) {
+	public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
 	}
 	
 	/*
-	 * Simple implementation to handle http GET request.
-	 * First and Third Bean is injected and auto wired to Second Bean.
-	 * We are working on auto mapping of JSON or XML request to Bean and vice versa for response.   
+	 * First and Third Bean is injected and auto wired to Second Bean.   
 	 */
-	public void get(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		
+	@Path("/hello")
+	@GET
+	public SecondBean hello() {
+		System.out.println("Hello GET method");
 		MyFirstBean mfb = (MyFirstBean) applicationContext.getBean("first");
 		mfb.setName("Berlin Framework");
 		
 		SecondBean sb = (SecondBean) applicationContext.getBean(SecondBean.class.getName());
-		resp.getWriter().write("<p>Hello from "+ sb.getMyFirstBean().getName()+ "<p>");
-		
-		resp.getWriter().write("<p>" + sb.getThirdBean().getMessage() + "<p>");
-		resp.getWriter().flush();
-		
+		System.out.println(sb.getMyFirstBean().getName());
+		System.out.println(sb.getThirdBean().getMessage());
+		return sb;
+	}
+	
+	/*
+	 * Example to demonstrate parameter usage   
+	 */
+	@Path("/echo/{message}")
+	@GET
+	public String echo(@PathParam("message")String msg) {
+		System.out.println("Hello echo() GET method");
+		System.out.println("Message from request is "+msg);
+		return msg;
+	}
+	
+	@GET
+	public void defHello() {
+		System.out.println("Default GET method");
+	}
+	
+	/*
+	 * Example to demonstrate usage of Query Params
+	 * Example request - /my?name=Abhilash&city=Bangalore
+	 */
+	@GET
+	public String param(@PathParam("name")String name, @PathParam("city")String city) {
+		System.out.println("Query Params are name="+ name + " and city="+city);
+		return "Query Params are name="+name+" and city="+city;
+	}
+	
+	/*
+	 * More Query Params
+	 * Example request - /my/info?name=Abhilash&city=Bangalore
+	 */
+	@Path("/info")
+	@GET
+	public String info(@PathParam("name")String name, @PathParam("city")String city) {
+		System.out.println("Query Params are name="+ name + " and city="+city);
+		return "Query Params are name="+name+" and city="+city;
 	}
 }
