@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * @author Abhilash Krishnan
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.TYPE, ElementType.METHOD})
-public @interface Path {
+@Target(ElementType.PARAMETER)
+public @interface PathParam {
     String value();
 }

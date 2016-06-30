@@ -1,5 +1,7 @@
 project(':berlin-beans') {
-
+    dependencies {
+        compile project (':berlin-core')
+    }
 }
 
 

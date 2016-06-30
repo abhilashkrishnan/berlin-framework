@@ -1,6 +1,11 @@
 package org.berlinframework.webmvc.servlet;
 
-import org.berlinframework.stereotype.Controller;
+import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.util.RegexUtils;
+import org.berlinframework.web.annotation.Path;
+import org.berlinframework.web.processor.http.HttpProcessor;
+import org.berlinframework.web.processor.http.HttpRequestProcessor;
+import org.berlinframework.web.processor.http.HttpResponseProcessor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Abhilash Krishnan
@@ -30,49 +34,41 @@ public class DispatcherServlet extends HttpServlet {
         this.loader = (WebContextLoader) getServletContext().getAttribute("loader");
     }
 
-    /*
-	 * Currently it is a very simple implementation. Will make it better
-	 */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.route(req, resp);
     }
 
-    /*
-	 * Currently it is a very simple implementation. Will make it better
-	 */
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.route(req, resp);
+        throw new UnsupportedOperationException();
+        //this.route(req, resp);
     }
 
     private void route(HttpServletRequest req, HttpServletResponse resp) {
-        WebApplicationContext webApplicationContext = (WebApplicationContext) this.loader.getBeanFactory();
-        Object controller = webApplicationContext.getBean(req.getRequestURI().substring(req.getContextPath().length()));
-        if(controller != null) {
-            Class<?> clazz = controller.getClass();
-            try {
-            /* Will remove hardcoded method names */
-                Method method = null;
+        BeanFactory beanFactory = this.loader.getBeanFactory();
+        String requestPathMatcher =  req.getRequestURI().substring(req.getContextPath().length());
 
-                if(req.getMethod().equals("GET"))
-                    method = clazz.getDeclaredMethod("get", HttpServletRequest.class, HttpServletResponse.class);
-                else if(req.getMethod().equals( "POST")) method = clazz.getDeclaredMethod("post", HttpServletRequest.class, HttpServletResponse.class);
+        List<Object> beanOne = beanFactory.getBeans().values().stream().filter(v -> {
+                Path path = v.getClass().getAnnotation(Path.class);
+                if(path != null) {
+                    if (requestPathMatcher.equals("/")) return path.value().equals(requestPathMatcher);
+                    return RegexUtils.match(requestPathMatcher, ("^" + path.value()).replaceAll("/", "\\/"));
+                }
+                return false;
+        }).collect(Collectors.toList());
 
-                if (method != null)
-                    method.invoke(controller, req, resp);
-                else new RuntimeException("Undefined operation");
-
-            } catch (NoSuchMethodException e) {
-                throw new RuntimeException(e);
-            } catch (SecurityException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            } catch (IllegalArgumentException e) {
-                throw new RuntimeException(e);
-            } catch (InvocationTargetException e) {
-                throw new RuntimeException(e);
+        if(!beanOne.isEmpty()) {
+            Object bean = beanOne.get(0);
+            if (bean == null)
+                throw new RuntimeException("No bean available to process the request");
+            else {
+                HttpProcessor httpProcessor = new HttpProcessor();
+                httpProcessor.setBeanFactory(beanFactory);
+                httpProcessor.addProcessor(new HttpRequestProcessor());
+                httpProcessor.addProcessor(new HttpResponseProcessor());
+                httpProcessor.process(req, resp, bean);
             }
         }
     }

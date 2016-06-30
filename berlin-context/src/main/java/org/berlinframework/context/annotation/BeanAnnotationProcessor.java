@@ -3,6 +3,7 @@ package org.berlinframework.context.annotation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
+import org.berlinframework.beans.factory.BeanFactory;
 import org.berlinframework.stereotype.Component;
 import org.berlinframework.stereotype.Controller;
 import org.berlinframework.stereotype.Repository;
@@ -83,24 +84,24 @@ public class BeanAnnotationProcessor extends AnnotationProcessor {
                                 Qualifier qualifier = field.getAnnotation(Qualifier.class);
                                 if(this.beanFactory.contains(qualifier.name()))
                                     throw new RuntimeException("Duplicate bean name");
-                                else this.beanFactory.getBeans().put(qualifier.name(), field.getType().newInstance());
+                                else {
+                                    if(!(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
+                                            || field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
+                                            || field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext")))
+                                    this.beanFactory.getBeans().put(qualifier.name(), field.getType().newInstance());
+                                }
                             }
                             else {
                                 if(!this.beanFactory.contains(field.getType().getName()))
+                                    if(!(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
+                                            || field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
+                                            || field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext")))
                                     this.beanFactory.getBeans().put(field.getType().getName(), field.getType().newInstance());
                             }
                         }
                     }
-                    if (annotation instanceof Controller) {
-                        Controller controller = (Controller) annotation;
-                        if (this.beanFactory.contains(controller.path()))
-                            throw new RuntimeException("Bean with duplicate path");
-                        this.beanFactory.getBeans().put(controller.path(), clazz.newInstance());
-                    }else {
-                        //Create instance of Bean
-                        if (!this.beanFactory.contains(clazz.getName()))
-                            this.beanFactory.getBeans().put(clazz.getName(), clazz.newInstance());
-                    }
+                    if (!this.beanFactory.contains(clazz.getName()))
+                        this.beanFactory.getBeans().put(clazz.getName(), clazz.newInstance());
                 } catch (InstantiationException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }

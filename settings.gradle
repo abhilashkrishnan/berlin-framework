@@ -1,1 +1,1 @@
-include ':berlin-beans', ':berlin-context', ':berlin-webmvc'
+include ':berlin-beans', ':berlin-core', ':berlin-context', ':berlin-web', ':berlin-webmvc'

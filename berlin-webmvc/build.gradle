@@ -2,6 +2,9 @@ project(':berlin-webmvc') {
     dependencies {
         compile project (':berlin-beans')
         compile project (':berlin-context')
+        compile project (':berlin-core')
+        compile project (':berlin-web')
+
     }
 }
 

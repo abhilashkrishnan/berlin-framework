@@ -1,6 +1,7 @@
 package org.berlinframework.context.annotation;
 
 import org.berlinframework.stereotype.Controller;
+import org.berlinframework.util.ReflectionUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
@@ -19,6 +20,7 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 			for (Method method : methods) {
 				boolean wired = false;
 
+				// Check for AutoWired methods
 				Annotation[] annotations = method.getAnnotations();
 				for (Annotation annotation : annotations) {
 					if (annotation instanceof AutoWired) {
@@ -31,16 +33,11 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 							params[i++] = bean;
 						}
 
-						method.setAccessible(true);
-						try {
-							method.invoke(v, params);
-						} catch (IllegalAccessException | InvocationTargetException e) {
-							throw new RuntimeException(e);
-						}
+						ReflectionUtils.invoke(method, v, params);
 						wired = true;
 					}
 				}
-				// If not wired check for AutoWired fields and inject to method
+				// If method is not AutoWired check for AutoWired fields in the bean class and inject to method
 				if(!wired)
 					autoWireFieldsToMethod(beanClass, method);
 			}
@@ -61,27 +58,29 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 			if (field != null) {
 				if( AnnotationUtils.isFieldQualifierApplied(field)) {
 					Qualifier qualifier = field.getAnnotation(Qualifier.class);
-					params[i++] = this.beanFactory.getBean(qualifier.name());
+					if(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
+							|| field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
+							|| field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext"))
+						params[i++] = this.beanFactory.getBean(this.beanFactory.getClass().getName());
+					else
+						params[i++] = this.beanFactory.getBean(qualifier.name());
 				}
-				else params[i++] = this.beanFactory.getBean(field.getType().getName());
+				else {
+					if(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
+							|| field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
+							|| field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext"))
+						params[i++] = this.beanFactory.getBean(this.beanFactory.getClass().getName());
+					else
+						params[i++] = this.beanFactory.getBean(field.getType().getName());
+				}
 			}
 		}
 
 		if(i > 0) {
-			method.setAccessible(true);
-			try {
-				Object bean = null;
-				Controller controller = clazz.getAnnotation(Controller.class);
-
-				if(controller != null)
-					bean = this.beanFactory.getBean(controller.path());
-				else bean = this.beanFactory.getBean(clazz.getName());
+				Object bean = this.beanFactory.getBean(clazz.getName());
 
 				if(bean != null)
-					method.invoke(bean, params);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				throw new RuntimeException(e);
-			}
+					ReflectionUtils.invoke(method, bean, params);
 		}
 	}
 }

@@ -20,7 +20,7 @@ public class WebContextLoader {
     }
 
     public void load() {
-        this.beanFactory.getBeans().put(this.beanFactory.getClass().getTypeName(), beanFactory);
+        this.beanFactory.getBeans().put(this.beanFactory.getClass().getName(), beanFactory);
         AnnotationProcessor annotationProcessor = new AnnotationProcessor();
         annotationProcessor.setBeanFactory(this.beanFactory);
         annotationProcessor.addProcessor(new BeanAnnotationProcessor());
