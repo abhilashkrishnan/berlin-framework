@@ -45,7 +45,7 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 					}
 				}
 
-				// If method is not AutoWired check for AutoWired fields in the bean class and inject to method
+				// If method is not AutoWired yet check for possible AutoWired fields in the bean class and inject to method
 				if(!wired)
 					autoWireFieldsToMethod(v, method);
 			}
