@@ -85,7 +85,7 @@ public class BeanAnnotationProcessor extends AnnotationProcessor {
                             if(AnnotationUtils.isFieldQualifierApplied(field)) {
                                 Qualifier qualifier = field.getAnnotation(Qualifier.class);
                                 if(this.applicationContext.contains(qualifier.name()))
-                                    throw new RuntimeException("Duplicate bean name");
+                                    throw new RuntimeException("Duplicate bean qualifier");
                                 else {
                                     if (!field.getType().isAssignableFrom(ApplicationContext.class))
                                         this.applicationContext.getBeans().put(qualifier.name(), field.getType().newInstance());
