@@ -19,6 +19,8 @@ We are currently working on the version 0.1 release.
 * Web Socket support
 * Database support
 * NoSQL support
+* JMS support
+* Big Data support
 
 ##Development
 The project is divided into sub projects. You can use your preferred IDE for development.
