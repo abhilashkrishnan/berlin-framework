@@ -13,7 +13,7 @@ import org.berlinframework.web.annotation.PathParam;
  */
 
 @Controller
-@Path("/my")
+@Path("/berlin")
 public class MyController {
 	
 	/*
@@ -22,9 +22,12 @@ public class MyController {
 	@AutoWired
 	private ApplicationContext applicationContext;
 	
-	public void setApplicationContext(ApplicationContext applicationContext) {
+	/*
+	 * Will get rid of setter methods for 
+	 */
+	/*public void setApplicationContext(ApplicationContext applicationContext) {
 		this.applicationContext = applicationContext;
-	}
+	}*/
 	
 	/*
 	 * First and Third Bean is injected and auto wired to Second Bean.   
@@ -40,7 +43,8 @@ public class MyController {
 	}
 	
 	/*
-	 * Example to demonstrate parameter usage   
+	 * Example to demonstrate parameter usage
+	 * /berlin/echo/your-message   
 	 */
 	@Path("/echo/{message}")
 	@GET
@@ -48,6 +52,9 @@ public class MyController {
 		return message;
 	}
 	
+	/*
+	 * Default GET method
+	 */
 	@GET
 	public String defaultHello() {
 		return "Hello from default GET method"; 
@@ -55,7 +62,7 @@ public class MyController {
 	
 	/*
 	 * Example to demonstrate usage of Query Params
-	 * Example request - /my?name=Abhilash&city=Bangalore
+	 * Example request - /berlin?name=Abhilash&city=Bangalore
 	 */
 	@GET
 	public String param(@PathParam("name")String name, @PathParam("city")String city) {
@@ -64,7 +71,7 @@ public class MyController {
 	
 	/*
 	 * More Query Params
-	 * Example request - /my/info?name=Abhilash&city=Bangalore
+	 * Example request - /berlin/info?name=Abhilash&city=Bangalore
 	 */
 	@Path("/info")
 	@GET
