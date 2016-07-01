@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * @author Abhilash Krishnan
  * The Front-Controller servlet
  */
-@WebServlet(name="dispatcher",urlPatterns="/*", loadOnStartup=2)
+@WebServlet(name="dispatcher",urlPatterns="/*", loadOnStartup=1)
 public class DispatcherServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private WebContextLoader loader;
