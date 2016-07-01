@@ -1,8 +1,8 @@
 package org.berlinframework.webmvc.servlet;
 
-import org.berlinframework.beans.factory.BeanFactory;
 import org.berlinframework.util.RegexUtils;
 import org.berlinframework.web.annotation.Path;
+import org.berlinframework.web.context.WebApplicationContext;
 import org.berlinframework.web.processor.http.HttpProcessor;
 import org.berlinframework.web.processor.http.HttpRequestProcessor;
 import org.berlinframework.web.processor.http.HttpResponseProcessor;
@@ -47,10 +47,10 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     private void route(HttpServletRequest req, HttpServletResponse resp) {
-        BeanFactory beanFactory = this.loader.getBeanFactory();
+        WebApplicationContext applicationContext = this.loader.getApplicationContext();
         String requestPathMatcher =  req.getRequestURI().substring(req.getContextPath().length());
 
-        List<Object> beanOne = beanFactory.getBeans().values().stream().filter(v -> {
+        List<Object> beanOne = applicationContext.getBeans().values().stream().filter(v -> {
                 Path path = v.getClass().getAnnotation(Path.class);
                 if(path != null) {
                     if (requestPathMatcher.equals("/")) return path.value().equals(requestPathMatcher);
@@ -65,7 +65,7 @@ public class DispatcherServlet extends HttpServlet {
                 throw new RuntimeException("No bean available to process the request");
             else {
                 HttpProcessor httpProcessor = new HttpProcessor();
-                httpProcessor.setBeanFactory(beanFactory);
+                httpProcessor.setApplicationContext(applicationContext);
                 httpProcessor.addProcessor(new HttpRequestProcessor());
                 httpProcessor.addProcessor(new HttpResponseProcessor());
                 httpProcessor.process(req, resp, bean);

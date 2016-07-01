@@ -3,7 +3,8 @@ package org.berlinframework.context.annotation;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.lang3.StringUtils;
-import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.beans.factory.ApplicationContext;
+import org.berlinframework.context.support.AbstractApplicationContext;
 import org.berlinframework.stereotype.Component;
 import org.berlinframework.stereotype.Controller;
 import org.berlinframework.stereotype.Repository;
@@ -26,7 +27,8 @@ public class BeanAnnotationProcessor extends AnnotationProcessor {
 
     @Override
     public void process() {
-        ClassLoader cl = this.beanFactory.getClassLoader();
+        ClassLoader cl = ((AbstractApplicationContext) this.applicationContext).getClassLoader();
+
         URLClassLoader urlCl = null;
 
         if (cl instanceof URLClassLoader)
@@ -48,7 +50,7 @@ public class BeanAnnotationProcessor extends AnnotationProcessor {
                             try {
                                 Class<?> clazz = cl.loadClass(className);
 
-                                if (!clazz.getName().equals(this.beanFactory.getClass().getTypeName()) && !clazz.isAnnotation() && !clazz.isInterface() && !clazz.isEnum() && !(clazz.getModifiers() == Modifier.ABSTRACT)) {
+                                if (!clazz.getName().equals(this.applicationContext.getClass().getTypeName()) && !clazz.isAnnotation() && !clazz.isInterface() && !clazz.isEnum() && !(clazz.getModifiers() == Modifier.ABSTRACT)) {
                                     this.processClass(clazz);
                                 }
                             } catch (ClassNotFoundException e) {
@@ -82,26 +84,22 @@ public class BeanAnnotationProcessor extends AnnotationProcessor {
                         if(AnnotationUtils.isFieldAutoWired(field)) {
                             if(AnnotationUtils.isFieldQualifierApplied(field)) {
                                 Qualifier qualifier = field.getAnnotation(Qualifier.class);
-                                if(this.beanFactory.contains(qualifier.name()))
+                                if(this.applicationContext.contains(qualifier.name()))
                                     throw new RuntimeException("Duplicate bean name");
                                 else {
-                                    if(!(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
-                                            || field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
-                                            || field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext")))
-                                    this.beanFactory.getBeans().put(qualifier.name(), field.getType().newInstance());
+                                    if (!field.getType().isAssignableFrom(ApplicationContext.class))
+                                        this.applicationContext.getBeans().put(qualifier.name(), field.getType().newInstance());
                                 }
                             }
                             else {
-                                if(!this.beanFactory.contains(field.getType().getName()))
-                                    if(!(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
-                                            || field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
-                                            || field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext")))
-                                    this.beanFactory.getBeans().put(field.getType().getName(), field.getType().newInstance());
+                                if(!this.applicationContext.contains(field.getType().getName()))
+                                    if (!field.getType().isAssignableFrom(ApplicationContext.class))
+                                        this.applicationContext.getBeans().put(field.getType().getName(), field.getType().newInstance());
                             }
                         }
                     }
-                    if (!this.beanFactory.contains(clazz.getName()))
-                        this.beanFactory.getBeans().put(clazz.getName(), clazz.newInstance());
+                    if (!this.applicationContext.contains(clazz.getName()))
+                        this.applicationContext.getBeans().put(clazz.getName(), clazz.newInstance());
                 } catch (InstantiationException | IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }

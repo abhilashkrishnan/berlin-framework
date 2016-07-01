@@ -1,6 +1,6 @@
 package org.berlinframework.context.annotation;
 
-import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.beans.factory.ApplicationContext;
 
 /**
  * Chain of Annotation Processors implementation following Chain of Responsibility Design Pattern
@@ -8,17 +8,17 @@ import org.berlinframework.beans.factory.BeanFactory;
  */
 public class AnnotationProcessor {
     protected AnnotationProcessor nextProcessor;
-    protected BeanFactory beanFactory;
+    protected ApplicationContext applicationContext;
 
-    public void setBeanFactory(BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
+    public void setApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
 
     public void addProcessor(AnnotationProcessor processor) {
         if (nextProcessor == null)
             nextProcessor = processor;
         else nextProcessor.addProcessor(processor);
-        nextProcessor.setBeanFactory(this.beanFactory);
+        nextProcessor.setApplicationContext(this.applicationContext);
     }
 
     public void process() {

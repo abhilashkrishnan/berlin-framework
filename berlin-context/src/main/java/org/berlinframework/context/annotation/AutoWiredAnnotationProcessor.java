@@ -1,10 +1,12 @@
 package org.berlinframework.context.annotation;
 
-import org.berlinframework.stereotype.Controller;
+import org.berlinframework.beans.factory.ApplicationContext;
 import org.berlinframework.util.ReflectionUtils;
 
 import java.lang.annotation.Annotation;
-import java.lang.reflect.*;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 /**
  * @author Abhilash Krishnan
@@ -13,7 +15,7 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 
 	public void process() {
 
-		this.beanFactory.getBeans().forEach((k, v) -> {
+		this.applicationContext.getBeans().forEach((k, v) -> {
 			Class<?> beanClass = v.getClass();
 
 			Method[] methods = beanClass.getDeclaredMethods();
@@ -29,7 +31,7 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 
 						int i = 0;
 						for (Class<?> paramClass : paramTypes) {
-							Object bean = this.beanFactory.getBean(paramClass.getName());
+							Object bean = this.applicationContext.getBean(paramClass.getName());
 							params[i++] = bean;
 						}
 
@@ -58,26 +60,22 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 			if (field != null) {
 				if( AnnotationUtils.isFieldQualifierApplied(field)) {
 					Qualifier qualifier = field.getAnnotation(Qualifier.class);
-					if(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
-							|| field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
-							|| field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext"))
-						params[i++] = this.beanFactory.getBean(this.beanFactory.getClass().getName());
+					if(field.getType().isAssignableFrom(ApplicationContext.class))
+						params[i++] = this.applicationContext.getBean(this.applicationContext.getClass().getName());
 					else
-						params[i++] = this.beanFactory.getBean(qualifier.name());
+						params[i++] = this.applicationContext.getBean(qualifier.name());
 				}
 				else {
-					if(field.getType().getName().equals("org.berlinframework.beans.factory.BeanFactory")
-							|| field.getType().getName().equals("org.berlinframework.beans.factory.ApplicationContext")
-							|| field.getType().getName().equals("org.berlinframework.webmvc.servlet.WebApplicationContext"))
-						params[i++] = this.beanFactory.getBean(this.beanFactory.getClass().getName());
+					if (field.getType().isAssignableFrom(ApplicationContext.class))
+						params[i++] = this.applicationContext.getBean(this.applicationContext.getClass().getName());
 					else
-						params[i++] = this.beanFactory.getBean(field.getType().getName());
+						params[i++] = this.applicationContext.getBean(field.getType().getName());
 				}
 			}
 		}
 
 		if(i > 0) {
-				Object bean = this.beanFactory.getBean(clazz.getName());
+				Object bean = this.applicationContext.getBean(clazz.getName());
 
 				if(bean != null)
 					ReflectionUtils.invoke(method, bean, params);

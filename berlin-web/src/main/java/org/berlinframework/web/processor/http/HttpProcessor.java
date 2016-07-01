@@ -1,6 +1,6 @@
 package org.berlinframework.web.processor.http;
 
-import org.berlinframework.beans.factory.BeanFactory;
+import org.berlinframework.web.context.WebApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,11 +10,11 @@ import javax.servlet.http.HttpServletResponse;
  * @author Abhilash Krishnan
  */
 public class HttpProcessor {
-    protected BeanFactory beanFactory;
+    protected WebApplicationContext applicationContext;
     protected HttpProcessor nextProcessor;
 
-    public void setBeanFactory(BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
+    public void setApplicationContext(WebApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
     }
 
     public void addProcessor(HttpProcessor processor) {
