@@ -7,11 +7,11 @@ import org.berlinframework.context.annotation.Qualifier;
 /**
  * @author Abhilash Krishnan
  */
-@Bean(name = "Second")
+@Bean()
 public class SecondBean {
 	
 	@AutoWired
-	@Qualifier(name = "first")
+	@Qualifier(name = "firstBean")
 	private MyFirstBean myFirstBean;
 	
 	private ThirdBean thirdBean;

@@ -5,7 +5,7 @@ import org.berlinframework.context.annotation.Bean;
 /**
  * @author Abhilash Krishnan
  */
-@Bean(name="myFirstBean")
+@Bean()
 public class MyFirstBean {
     private String name;
 

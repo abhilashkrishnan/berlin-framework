@@ -16,7 +16,6 @@ public class RootController {
 
 	@GET
 	public String index() {
-		System.out.println("Root or Index Controller");
 		return "<p>Welcome to my web root!</p> <p>Powered by Berlin Framework</p>";
 	}
 }
