@@ -18,6 +18,11 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 		this.applicationContext.getBeans().forEach((k, v) -> {
 			Class<?> beanClass = v.getClass();
 
+			//Autowire fields
+			this.autoWireFields(v);
+
+			//Autowire methods
+
 			Method[] methods = beanClass.getDeclaredMethods();
 			for (Method method : methods) {
 				boolean wired = false;
@@ -39,9 +44,10 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 						wired = true;
 					}
 				}
+
 				// If method is not AutoWired check for AutoWired fields in the bean class and inject to method
 				if(!wired)
-					autoWireFieldsToMethod(beanClass, method);
+					autoWireFieldsToMethod(v, method);
 			}
 		});
 
@@ -49,7 +55,32 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 			nextProcessor.process();
 	}
 
-	private void autoWireFieldsToMethod(Class<?> clazz, Method method) {
+	private void autoWireFields(Object bean) {
+
+		Field[] fields = bean.getClass().getDeclaredFields();
+
+		for (Field field : fields) {
+			if (field.getAnnotation(AutoWired.class) != null ) {
+				field.setAccessible(true);
+
+				Object value = null;
+
+				if(field.getType().isAssignableFrom(ApplicationContext.class))
+					value = this.applicationContext.getBean(this.applicationContext.getClass().getTypeName());
+				else value = this.applicationContext.getBean(field.getType().getName());
+
+				if(value != null)
+					try {
+						field.set(bean, value);
+					} catch (IllegalAccessException e) {
+						throw new RuntimeException(e);
+					}
+			}
+		}
+	}
+
+	private void autoWireFieldsToMethod(Object bean, Method method) {
+		Class<?> clazz = bean.getClass();
 		Parameter[] parameters = method.getParameters();
 		Object[] params = new Object[parameters.length];
 
@@ -75,10 +106,7 @@ public class AutoWiredAnnotationProcessor extends AnnotationProcessor{
 		}
 
 		if(i > 0) {
-				Object bean = this.applicationContext.getBean(clazz.getName());
-
-				if(bean != null)
-					ReflectionUtils.invoke(method, bean, params);
+			ReflectionUtils.invoke(method, bean, params);
 		}
 	}
 }
