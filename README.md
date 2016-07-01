@@ -19,5 +19,5 @@ The project is divided into sub projects. You can use your preferred IDE for dev
 We are using Gradle build system. You can execute "gradle clean build" to build the projects.
 
 ##Tutorials
-To get a feel of Berlin DI and WebMVC please build and run berlin-webmvc-test project.
+We suggest you to build and run the berlin-webmvc-test project.
 More tutorials coming soon!
