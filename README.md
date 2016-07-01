@@ -16,6 +16,7 @@ We are currently working on the version 0.1 release.
 * Bean Scoping
 * Http PUT DELETE HEAD OPTIONS support
 * XML request and response auto-mapping
+* Javascript View
 * Web Socket support
 * Database support
 * NoSQL support
