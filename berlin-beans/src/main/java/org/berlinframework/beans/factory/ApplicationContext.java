@@ -1,8 +1,6 @@
 package org.berlinframework.beans.factory;
 
-public class ApplicationContext extends BeanFactory {
+public interface ApplicationContext extends BeanFactory {
 
-	public ApplicationContext() {
-		
-	}
+	String getApplicationName();
 }
