@@ -1,5 +1,5 @@
 # Berlin Framework
-Dependency Injection, Ioc and MVC Framework for the web. 
+Dependency Injection, IoC and MVC Framework for the web. 
 
 #Why another framework?
 Berlin Framework aims to be an innovative ploygot web framework with support for Java, Scala, JavaScript, PHP, Python and Ruby. What it means is that you will be able to write complete or "partial" web applications using any of those languages.
@@ -19,6 +19,7 @@ We are currently working on the version 1.0 release.
 
 ##What next?
 * Bean Scoping
+* Aspect Oriented Programming (AOP) support
 * Http PUT DELETE HEAD OPTIONS support
 * XML request and response auto-mapping
 * Web Socket support
