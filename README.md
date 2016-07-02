@@ -29,12 +29,13 @@ JSON request and response auto-mapping
 ```
 Bean Scoping
 Aspect Oriented Programming (AOP) support
-Http PUT DELETE HEAD OPTIONS support
 XML request and response auto-mapping
-WebSocket support
-SOAP and REST Web Services support
-Obect Relational Mapping (ORM) support
+Object Relational Mapping (ORM) support
+Security Support
 Polygot Programming support
+SOAP and REST Web Services support
+Http PUT DELETE HEAD OPTIONS support
+WebSocket support
 NoSQL support
 JMS support
 Rule Engine support
