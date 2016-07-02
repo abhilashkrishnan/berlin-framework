@@ -7,7 +7,9 @@ Berlin Framework aims to be a `superheroic and innovative polygot web framework`
 
 Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in Python or Ruby or Groovy and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala module from the web module written in Python or Ruby or Groovy all deployed in the same web container. 
 
-Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task and Berlin Framework will `automagically` provide you unmatched integration and interoperability all in the same web container. Sounds exciting? We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
+Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task and Berlin Framework will `automagically` provide you unmatched integration and interoperability all in the same web container. Sounds exciting? 
+
+We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
 
 ##Latest News
 
