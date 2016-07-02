@@ -25,14 +25,14 @@ IoC Container
 Auto-wiring beans by Type and Name
 Singleton and Prototype beans
 Http POST and GET request support
-JSON request and response auto-mapping
+JSON request and response auto mapping
 ```
 ##What next?
 
 ```
 Bean Scoping
 Aspect Oriented Programming (AOP) support
-XML request and response auto-mapping
+XML request and response auto mapping
 JDBC and Object Relational Mapping (ORM) support
 Security Support
 Polygot Programming support
