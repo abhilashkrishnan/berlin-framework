@@ -2,11 +2,12 @@
 `Superheroic and Innovative` Dependency Injection, IoC and MVC Framework for the web. 
 
 #Why another framework?
-Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python and Ruby`. What it means is that you will be able to write complete web applications in any or all of those programming languages.
 
-Berlin Framework will provide you hassle-free interoperability between code written in multiple programming languages. For example you will be able to write a web module in Python or Ruby and a database module in Java. You will be seamlessly able to call data access operations of the Java module from the web module written in Python or Ruby all deployed in the same web container. 
+Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy (and possibly Haskell)`. What it means is that you will be able to write complete web applications in any or all of those programming languages.
 
-Your development pipeline will be able to "mix-and-match" and be flexible enough to choose the programming language which matters the most for a specific task and Berlin Framework will automagically provide you unmatched integration and interoperability all in the same web container. Sounds exciting?
+Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in Python or Ruby or Groovy and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala module from the web module written in Python or Ruby or Groovy all deployed in the same web container. 
+
+Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task and Berlin Framework will `automagically` provide you unmatched integration and interoperability all in the same web container. Sounds exciting? We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
 
 ##Latest News
 
@@ -30,7 +31,7 @@ JSON request and response auto-mapping
 Bean Scoping
 Aspect Oriented Programming (AOP) support
 XML request and response auto-mapping
-Object Relational Mapping (ORM) support
+JDBC and Object Relational Mapping (ORM) support
 Security Support
 Polygot Programming support
 SOAP and REST Web Services support
@@ -45,6 +46,9 @@ Scheduler support
 Reactive Programming support
 Big Data support
 ```
+##How to contribute?
+Connect with us through GitHub. We will try to honour your interest and time in the best possible way. 
+
 ##Development
 The project is divided into sub projects. You can use your preferred IDE for development.
 
