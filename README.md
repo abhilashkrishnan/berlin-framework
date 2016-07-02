@@ -15,7 +15,7 @@ We certainly plan to take web application development to the `next level` and be
 
 > Version 1.0 release is around the corner
 
-> Working on improved and faster performance upgrade for Dependency Injection and Inversion of Control (IoC)
+> Working on improved and faster performance upgrade on Dependency Injection and Inversion of Control (IoC)
 
 ##Features
 
