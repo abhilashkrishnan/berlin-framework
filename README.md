@@ -11,37 +11,38 @@ Your development pipeline will be able to "mix-and-match" and be flexible enough
 ##Latest News
 
 > Version 1.0 release is around the corner
+
 > Faster performance upgrade for Dependency Injection and Inversion of Control (IoC)
 
 ##Features
 
 ```
-* Dependency Injection
-* IoC Container
-* Auto-wiring beans
-* Singleton and Prototype beans
-* Http POST and GET request support
-* JSON request and response auto-mapping
+Dependency Injection
+IoC Container
+Auto-wiring beans by Type and Name
+Singleton and Prototype beans
+Http POST and GET request support
+JSON request and response auto-mapping
 ```
 ##What next?
 
 ```
-* Bean Scoping
-* Aspect Oriented Programming (AOP) support
-* Http PUT DELETE HEAD OPTIONS support
-* XML request and response auto-mapping
-* WebSocket support
-* SOAP and REST Web Services support
-* Obect Relational Mapping (ORM) support
-* Polygot Programming support
-* NoSQL support
-* JMS support
-* Rule Engine support
-* BPM support
-* Reporting support
-* Scheduler support
-* Reactive Programming support
-* Big Data support
+Bean Scoping
+Aspect Oriented Programming (AOP) support
+Http PUT DELETE HEAD OPTIONS support
+XML request and response auto-mapping
+WebSocket support
+SOAP and REST Web Services support
+Obect Relational Mapping (ORM) support
+Polygot Programming support
+NoSQL support
+JMS support
+Rule Engine support
+BPM support
+Reporting support
+Scheduler support
+Reactive Programming support
+Big Data support
 ```
 ##Development
 The project is divided into sub projects. You can use your preferred IDE for development.
