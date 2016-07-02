@@ -23,7 +23,7 @@ We are currently working on the version 1.0 release.
 * Http PUT DELETE HEAD OPTIONS support
 * XML request and response auto-mapping
 * WebSocket support
-* SOAP and REST support
+* SOAP and REST Web Services support
 * Obect Relational Mapping (ORM) support
 * Polygot Programming support
 * NoSQL support
