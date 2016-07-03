@@ -34,7 +34,7 @@ Bean Scoping
 Aspect Oriented Programming (AOP) support
 XML request and response auto mapping
 JDBC and Object Relational Mapping (ORM) support
-Security Support
+Security support
 Polygot Programming support
 SOAP and REST Web Services support
 Http PUT DELETE HEAD OPTIONS support
@@ -55,7 +55,7 @@ Connect with us through GitHub. We will try to honour your interest and time in 
 The project is divided into sub projects. You can use your preferred IDE for development.
 
 ##Build
-We are using Gradle build system to build the projects. 
+We are using Gradle to build the projects. 
 
 ##Tutorials
 We suggest you to build and run the berlin-webmvc-test project.
