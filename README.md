@@ -1,9 +1,9 @@
 # Berlin Framework
-`Superheroic and Innovative` Dependency Injection, IoC and MVC Framework for the web. 
+Dependency Injection, IoC and MVC Framework for the web. 
 
 #Why another framework?
 
-Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy (and possibly Haskell)`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
+Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
 
 Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala module from the web module written in PHP or Python or Ruby all deployed in the same web container. 
 
