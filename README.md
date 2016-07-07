@@ -21,9 +21,9 @@ We certainly plan to take web application development to the `next level` and be
 
 ```
 Dependency Injection
-IoC Container
-Auto-wiring beans by Type and Name
+Inversion of Control (IoC) Container
 Singleton and Prototype beans
+Auto-wiring beans by Type and Name
 Http POST and GET request support
 JSON request and response auto mapping
 ```
@@ -39,13 +39,13 @@ Polygot Programming support
 SOAP and REST Web Services support
 Http PUT DELETE HEAD OPTIONS support
 WebSocket support
+Reactive Programming support
 NoSQL support
 JMS support
 Rule Engine support
 BPM support
 Reporting support
 Scheduler support
-Reactive Programming support
 Big Data support
 ```
 ##How to contribute?
