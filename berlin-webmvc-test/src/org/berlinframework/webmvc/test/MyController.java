@@ -8,7 +8,7 @@ import org.berlinframework.web.annotation.Path;
 import org.berlinframework.web.annotation.PathParam;
 
 /**
- * Berlin WebMVC Controller implementation
+ * Berlin WebMVC Controller implementation (Http POST support will be available soon)
  * @author Abhilash Krishnan
  */
 
