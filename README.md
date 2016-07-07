@@ -26,7 +26,7 @@ Broadly speaking, there are many ways to achieve inter process communication (IP
 *  Databases
 *  Web Services
 
-In Berlin Framework invocation of methods across disparate languages in the same container will be achieved using `API Bridge`. It will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses a `native method call` you won't experience any degradation of performance in the application.
+In Berlin Framework invocation of methods across disparate languages in the same container will be achieved through `API Bridge`. It will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses a `native method call` you will rarely experience any performance degradation in the application.
 
 Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages. Sounds exciting? 
 
