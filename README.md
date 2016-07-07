@@ -5,11 +5,14 @@ Dependency Injection, IoC and MVC Framework for the web.
 
 Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
 
-Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby all deployed in the same container. Invocation of methods across disparate languages work without the use of RPC or Web Services. It will work "as a" `native method call` (while deployed in the same container) without the use of any cumbersome or additional configuration and hence it will be much faster compared to RPC or Web Services which involves the overhead of `marshalling and unmarshalling` of objects. RPC and Web Services components are also prone to issues with `Network Congestion and Latency`. Hence we try to avoid it all costs at the same time providing deployment of polygot modules in the same container and eventually invoke the operations as `native method calls`. And that's `secret sauce` of Berlin Framework! 
+Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby all deployed in the same container. Invocation of methods across disparate languages in the same container work without the use of RPC or Web Services. It will work "as a" `native method call` (while deployed in the same container) without the use of any cumbersome or additional configuration and hence it will be much faster compared to RPC or Web Services which involves the overhead of `marshalling and unmarshalling` of objects. Hence we try to avoid it all costs at the same time providing deployment of polygot modules in the same container and eventually invoke the operations as `native method calls`. And that's `secret sauce` of Berlin Framework! 
+
+Having said that we are also planning to support distributed application components i.e. components deployed in multiple containers distributed across the network or web. In such a scenraio we will have to bend the rules and fallback on RPC to invoke the operations on the distributed components.
 
 Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages all deployed in the same container. Sounds exciting? 
 
 We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
+
 
 ##Latest News
 
@@ -37,6 +40,7 @@ JDBC and Object Relational Mapping (ORM) support
 Security support
 Polygot Programming support
 SOAP and REST Web Services support
+Micro Services support
 Http PUT DELETE HEAD OPTIONS support
 WebSocket support
 Reactive Programming support
