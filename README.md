@@ -1,6 +1,12 @@
 # Berlin Framework
 Dependency Injection, IoC and MVC Framework for the web. 
 
+##Latest News
+
+> Version 1.0 release is around the corner
+
+> Working on improved and faster performance upgrade on Dependency Injection and Inversion of Control (IoC)
+
 #Why another framework?
 
 Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
@@ -15,12 +21,6 @@ We certainly plan to take web application development to the `next level` and be
 
 ##Distributed Components
 Apart from deployment of polygot modules in the same container we are also planning to support distributed polygot modules i.e. polygot modules deployed in containers distributed across the network. For e.g. Server1 in your network will host the container for module written in PHP or JavaScript and Server2 will host the container for module written in Java or Scala. PHP or Javascript module will be able to invoke methods on Java or Scala module distributed across the network. In such a scenario we will have to bend the rules and fallback on RPC to invoke the methods across distributed components.
-
-##Latest News
-
-> Version 1.0 release is around the corner
-
-> Working on improved and faster performance upgrade on Dependency Injection and Inversion of Control (IoC)
 
 ##Features
 
