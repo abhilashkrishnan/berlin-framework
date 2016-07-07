@@ -11,11 +11,11 @@ Berlin Framework aims to be a `superheroic and innovative polygot web framework`
 
 Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby.
 
-Broadly speaking, there are many ways to achieve inter process communication (IPC). They are,
-*  Using java.lang.Runtime.exec() from Java applications
-*  Using java.lang.ProcessBuilder from Java applications
-*  Using RMI (Remote Method Invocation) between Java applications
-*  Using CORBA (Common Object Request Broker Architecture)
+Broadly speaking, there are many ways to achieve inter process communication (IPC). Some of them are,
+*  java.lang.Runtime.exec() from Java applications
+*  java.lang.ProcessBuilder from Java applications
+*  RMI (Remote Method Invocation) between Java applications
+*  CORBA (Common Object Request Broker Architecture)
 *  RPC (Remote Procedure Call)
 *  File
 *  Pipe  
@@ -24,7 +24,7 @@ Broadly speaking, there are many ways to achieve inter process communication (IP
 *  Databases
 *  Web Services
 
-In Berlin Framework invocation of methods across disparate languages in the same container will be achieved through `API Bridge`. It will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses a `native method call` you will rarely experience any performance degradation in the application.
+In Berlin Framework invocation of methods across modules written in disparate languages deployed in the same container will be achieved through `API Bridge`. Method invocation will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses `native method call` you will rarely experience any performance degradation in the application.
 
 Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages. Sounds exciting? 
 
