@@ -11,11 +11,24 @@ Dependency Injection, IoC and MVC Framework for the web.
 
 Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
 
-Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby all deployed in the same container. 
+Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby.
 
-Invocation of methods across disparate languages in the same container work without the use of any RPC mechanism. Instead it will work "as a" `native method call` (while deployed in the same container) without the use of any additional configuration or IDL (Interface Definition Language). The advantage of deploying `polygot modules` in the same container is that it will be much faster to invoke methods compared to RPC based systems which involves the overhead of `marshalling and unmarshalling` of objects. Hence we try to avoid it at all costs at the same time providing deployment of `polygot modules` in the same container and eventually invoke the methods as `native method calls`. And that's `secret sauce` of Berlin Framework! 
+Broadly speaking, there are many ways to achieve inter process communication (IPC). They are,
+> Using java.lang.Runtime.exec() from Java applications
+> Using java.lang.ProcessBuilder from Java applications
+> Using RMI (Remote Method Invocation) between Java applications
+> Using CORBA (Common Object Request Broker Architecture)
+> RPC (Remote Procedure Call)
+> File
+> Pipe  
+> Shared Memory 
+> Sockets
+> Databases
+> Web Services
 
-Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages all deployed in the same container. Sounds exciting? 
+In Berlin Framework invocation of methods across disparate languages in the same container will be achieved using `API Bridge`. It will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses a `native method call` you won't experience any degradation of performance in the application.
+
+Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages. Sounds exciting? 
 
 We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
 
@@ -25,7 +38,7 @@ This section will be elaborated upon the release of version 1.0 of Berlin Framew
 ##Scalability 
 Having web application packaged with polygot modules deployed in the same container doesn't mean you cannot scale. You will be able to scale not only vertically (Scale Up/Down) but also horizontally (Scale In/Out). You will be able to deploy the web application consisting of polygot modules distributed across the container nodes. In such a scenario you should be able to provide `reverse proxy or load balancing` solutions to serve the web applications deployed in the `distributed container nodes`.
 
-##Distributed Polygot Modules, an evolution and embracing convention
+##Distributed Polygot Modules, an evolution inside
 Apart from the deployment of web application packaged with polygot modules in the same container we are also planning to support `distributed polygot modules` i.e. polygot modules deployed in containers distributed across the network. For e.g. Server1 in your network will host the container for module written in PHP or JavaScript and Server2 will host the container for module written in Java or Scala. PHP or Javascript module will be able to invoke methods on Java or Scala module distributed across the network. In such a scenario Berlin Framework will have to bend the rules and fallback on RPC to invoke the methods across `distributed polygot modules`.
 
 ##Features
