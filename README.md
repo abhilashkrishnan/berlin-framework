@@ -20,10 +20,10 @@ Your development pipeline will be able to `mix-and-match` and be `flexible` enou
 We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
 
 ##Scalability 
-Having polygot modules deployed in the same container doesn't mean you cannot scale. You will be able to scale not only vertically (Scale Up) but also horizontally (Scale Out). You will be able to deploy the web application consisting of polygot modules across the nodes and provide reverse proxy or load balancing solutions to access the distributed nodes.
+Having polygot modules deployed in the same container doesn't mean you cannot scale. You will be able to scale not only vertically (Scale Up) but also horizontally (Scale Out). You will be able to deploy the web application consisting of polygot modules distributed across the container nodes and provide reverse proxy or load balancing solutions to access the distributed container nodes.
 
 ##Distributed Polygot Modules
-Apart from deployment of polygot modules in the same container we are also planning to support `distributed polygot modules` i.e. polygot modules deployed in containers distributed across the network. For e.g. Server1 in your network will host the container for module written in PHP or JavaScript and Server2 will host the container for module written in Java or Scala. PHP or Javascript module will be able to invoke methods on Java or Scala module distributed across the network. In such a scenario we will have to bend the rules and fallback on RPC to invoke the methods across distributed modules.
+Apart from the deployment of polygot modules in the same container we are also planning to support `distributed polygot modules` i.e. polygot modules deployed in containers distributed across the network. For e.g. Server1 in your network will host the container for module written in PHP or JavaScript and Server2 will host the container for module written in Java or Scala. PHP or Javascript module will be able to invoke methods on Java or Scala module distributed across the network. In such a scenario we will have to bend the rules and fallback on RPC to invoke the methods across distributed modules.
 
 ##Features
 
