@@ -36,7 +36,7 @@ This section will be elaborated upon the release of version 1.0 of Berlin Framew
 ##Scalability 
 Having web application packaged with polygot modules deployed in the same container doesn't mean you cannot scale. You will be able to scale not only vertically (Scale Up/Down) but also horizontally (Scale In/Out). You will be able to deploy the web application packaged with polygot modules distributed across the container nodes. In such a scenario you should be able to provide `reverse proxy or load balancing` solutions to serve the web applications deployed in the `distributed container nodes`.
 
-##Distributed Polygot Modules, an evolution inside
+##Distributed Polygot Modules, an evolution inevitable!
 Apart from the deployment of web application packaged with polygot modules in the same container we are also planning to support `distributed polygot modules` i.e. polygot modules deployed in containers distributed across the network. For e.g. Server1 in your network will host the container for module written in PHP or JavaScript and Server2 will host the container for module written in Java or Scala. PHP or Javascript module will be able to invoke methods on Java or Scala module distributed across the network. In such a scenario Berlin Framework will have to bend the rules and fallback on RPC to invoke the methods across `distributed polygot modules`.
 
 ##Features
