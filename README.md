@@ -14,17 +14,17 @@ Berlin Framework aims to be a `superheroic and innovative polygot web framework`
 Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in PHP or Python or Ruby.
 
 Broadly speaking, there are many ways to achieve inter process communication (IPC). They are,
-> Using java.lang.Runtime.exec() from Java applications
-> Using java.lang.ProcessBuilder from Java applications
-> Using RMI (Remote Method Invocation) between Java applications
-> Using CORBA (Common Object Request Broker Architecture)
-> RPC (Remote Procedure Call)
-> File
-> Pipe  
-> Shared Memory 
-> Sockets
-> Databases
-> Web Services
+*  Using java.lang.Runtime.exec() from Java applications
+*  Using java.lang.ProcessBuilder from Java applications
+*  Using RMI (Remote Method Invocation) between Java applications
+*  Using CORBA (Common Object Request Broker Architecture)
+*  RPC (Remote Procedure Call)
+*  File
+*  Pipe  
+*  Shared Memory 
+*  Sockets
+*  Databases
+*  Web Services
 
 In Berlin Framework invocation of methods across disparate languages in the same container will be achieved using `API Bridge`. It will work as a `native method call` without the use of any additional configuration or IDL (Interface Definition Language). Since it uses a `native method call` you won't experience any degradation of performance in the application.
 
