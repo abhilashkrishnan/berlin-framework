@@ -5,7 +5,7 @@ Dependency Injection, IoC and MVC Framework for the web.
 
 Berlin Framework aims to be a `superheroic and innovative polygot web framework` with support for `Java, Scala, JavaScript, PHP, Python, Ruby and Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
 
-Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala module from the web module written in PHP or Python or Ruby all deployed in the same web container. 
+Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in PHP or Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala module from the web module written in PHP or Python or Ruby all deployed in the same web container. Invocation of methods across disparate languages works without the use of RPC or Web Services. It "works" as a `native method call` without the use of any cumbersome or additional configuration. And that's secret sauce of Berlin Framework!
 
 Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages all deployed in the same web container. Sounds exciting? 
 
@@ -53,6 +53,8 @@ Connect with us through GitHub. We will try to honour your interest and time in 
 
 ##Development
 The project is divided into sub projects. You can use your preferred IDE for development.
+
+When we introduce Polygot support later, we plan to release an IntelliJ IDEA plugin which will enable you to develop, build, test and deploy polygot web applications using Berlin Framework.
 
 ##Build
 We are using Gradle to build the projects. 
