@@ -56,7 +56,7 @@ Connect with us through GitHub. We will try to honour your interest and time in 
 ##Development
 The project is divided into sub projects. You can use your preferred IDE for development.
 
-When we introduce Polygot support later, we are planning to release plugins for IntelliJ IDEA and Eclipse which will enable you to develop, build, test and deploy polygot web applications using Berlin Framework.
+When we introduce Polyglot support later, we are planning to release plugins for IntelliJ IDEA and Eclipse which will enable you to develop, build, test and deploy polygot web applications using Berlin Framework.
 
 ##Build
 We are using Gradle to build the projects. 
