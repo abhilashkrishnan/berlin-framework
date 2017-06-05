@@ -15,7 +15,7 @@ Your development pipeline will be able to `mix-and-match` and be `flexible` enou
 We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
 
 ##Under the hood
-Berlin Framework will harness the power and scalability of Java Virtual Machine (JVM). The code written in the supported languages will be compiled to Java bytecode and will be packaged as Web Archive (WAR) along with view components (such as HTML, JSP, ERB, CSS, JS and JPG/PNG formats). The packaged WAR can be deployed to any Java application server such as Tomcat or Glassfish or Weblogic. 
+Berlin Framework will harness the power and scalability of Java Virtual Machine (JVM). The code written in the supported languages will be compiled to Java bytecode.
 
 ##Features
 
@@ -33,13 +33,13 @@ JSON request and response auto mapping
 Bean Scoping
 Aspect Oriented Programming (AOP) support
 XML request and response auto mapping
-JDBC and Object Relational Mapping (ORM) support
+Object Relational Mapping (ORM) support
 Security support
 Polyglot Programming support
 IntelliJ IDEA and Eclipse plugins
 SOAP and REST Web Services support
-Micro Services support
-Http PUT DELETE HEAD OPTIONS support
+Microservices support
+Http PUT DELETE PATCH HEAD OPTIONS support
 WebSocket support
 Reactive Programming support
 NoSQL support
