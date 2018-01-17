@@ -1,2 +1,2 @@
 #Berlin WebMVC Test 
-This is an Eclipse Project to test the features of Berlin WebMVC.
+This project will enable to get a hands-on experience on testing the features of Berlin framework.
