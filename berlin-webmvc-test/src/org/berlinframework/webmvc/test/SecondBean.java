@@ -16,13 +16,14 @@ public class SecondBean {
 	
 	private ThirdBean thirdBean;
 	
+	/*
 	public void setMyFirstBean(MyFirstBean myFirstBean) {
 		this.myFirstBean = myFirstBean;
 	}
 	
 	public MyFirstBean getMyFirstBean() {
 		return this.myFirstBean;
-	}
+	}*/
 	
 	@AutoWired
 	public void setThirdBean(ThirdBean thirdBean) {
