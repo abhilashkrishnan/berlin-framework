@@ -7,7 +7,7 @@ import org.berlinframework.context.annotation.Qualifier;
 /**
  * @author Abhilash Krishnan
  */
-@Bean()
+@Bean
 public class SecondBean {
 	
 	@AutoWired
