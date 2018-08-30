@@ -6,7 +6,7 @@ Polyglot web framework on Java Virtual Machine (JVM)
 > Working on improved and faster performance upgrade on Dependency Injection and Inversion of Control (IoC)
 
 # Why another framework?
-Berlin Framework aims to be a `superheroic and innovative polyglot web framework` with support for `Java, Scala, JavaScript, Python, Ruby, Groovy and Golang`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
+Berlin Framework aims to be a `an innovative polyglot web framework` with support for `Java, Scala, JavaScript, Python, Ruby, Groovy`. What it means is that you will be able to write complete web applications in any or all of those programming languages using Berlin Framework. 
 
 Berlin Framework will provide you `hassle-free` interoperability between code written in multiple programming languages. For example you will be able to write a web module in Python or Ruby and a database module in Java or Scala. You will be seamlessly able to call data access operations of the Java or Scala database module from the web module written in Python or Ruby.
 
