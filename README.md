@@ -12,8 +12,6 @@ Berlin Framework will provide you `hassle-free` interoperability between code wr
 
 Your development pipeline will be able to `mix-and-match` and be `flexible` enough to choose the programming language which matters the most for a specific task or `faster-time-to-market`. Berlin Framework will `automagically` inject the dependencies and provide you unmatched integration and interoperability across the code written in multiple programming languages. Sounds exciting? 
 
-We certainly plan to take web application development to the `next level` and be `enterprise ready`! 
-
 ## Under the hood
 Berlin Framework will harness the power and scalability of Java Virtual Machine (JVM). The code written in the supported languages will be compiled to Java bytecode.
 
